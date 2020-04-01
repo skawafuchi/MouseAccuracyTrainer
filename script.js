@@ -171,7 +171,7 @@ function startGame() {
 function stopGame() {
   clearInterval(interval);
   document.querySelector(".settings").classList.remove("removed");
-  document.querySelector(".score").textContent = "Hit " + score + "/" + targetNum + " (" + Math.round(score/targetNum*1000)/100 + "%)";
+  document.querySelector(".score").textContent = "Hit " + score + "/" + targetNum + " (" + Math.round(score/targetNum*10000)/100 + "%)";
   targets = document.querySelectorAll(".target");
   for (let i = 0; i < targets.length; i++) {
     targets[i].parentNode.removeChild(targets[i]);

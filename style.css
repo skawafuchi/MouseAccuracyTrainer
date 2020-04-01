@@ -1,0 +1,103 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #323232;
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+  color:#FDFDFD;
+}
+
+input[type="radio"]:checked+label {
+  border: solid 3px #14ffec;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+/*Added transparent border to avoid button position movement when changing selections*/
+label {
+  border: solid 3px #c6cbef;
+  border: solid 3px rgba(0, 0, 0, 0.0);
+  padding: 2px;
+}
+
+.adjustable-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media only screen and (max-width: 900px) {
+  .adjustable-settings {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.button,.button-start {
+  margin: auto;
+  margin-top: 20px;
+  font-size: 1em;
+  font-family: 'Varela Round', sans-serif;
+  padding: 0 20px;
+  background-color: #0d7377;
+  color: #14ffec;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: thick;
+}
+
+.button-start {
+  font-size: 3em;
+}
+
+.button:hover {
+  background-color: #F0F0F0;
+}
+
+.removed {
+  display: none;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.score {
+  margin-top: 10px;
+}
+
+.setting-name {
+  font-weight: bold;
+}
+
+.settings {
+  border-radius: 30px;
+  background-color: #212121;
+  margin: 10% 30% 10% 30%;
+}
+
+@media only screen and (max-width: 520px) {
+  .settings {
+    border-radius: 30px;
+    margin: 10% auto;
+  }
+}
+
+.settings-column {
+  display: grid;
+  grid-template-columns: 1fr 1.9fr;
+  grid-template-rows: minmax(3em, auto);
+  align-items: center;
+}
+
+.setting-name,.setting-values{
+  margin:10px;
+}
+
+.target {
+  border-radius: 50%;
+  background-color: #14ffec;
+  position: absolute;
+}

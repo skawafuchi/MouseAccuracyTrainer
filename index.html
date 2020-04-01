@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Mouse Accuracy Trainer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+  <div class="settings">
+    <h1>
+      Mouse Accuracy Trainer
+    </h1>
+    <div class="adjustable-settings">
+      <div class="settings-column">
+        <div class="setting-name">
+          Target Size:
+        </div>
+        <div class="setting-values">
+          <input class="removed" type="radio" id="target-smol" name="size" checked>
+          <label for="target-smol">smol</label>
+          <input class="removed" type="radio" id="target-medium" name="size">
+          <label for="target-medium">medium</label>
+          <input class="removed" type="radio" id="target-chonk" name="size">
+          <label for="target-chonk">chonk</label>
+        </div>
+        <div class="setting-name">
+          Difficulty:
+        </div>
+        <div class="setting-values">
+          <input class="removed" type="radio" id="difficulty-easy" name="difficulty" checked>
+          <label for="difficulty-easy">easy</label>
+          <input class="removed" type="radio" id="difficulty-normal" name="difficulty">
+          <label for="difficulty-normal">medium</label>
+          <input class="removed" type="radio" id="difficulty-brutal" name="difficulty">
+          <label for="difficulty-brutal">brutal</label>
+        </div>
+        <div class="setting-name">
+          Hit Register:
+        </div>
+        <div class="setting-values">
+          <input class="removed" type="radio" id="hit-click" name="hit-register" checked>
+          <label for="hit-click">click</label>
+          <input class="removed" type="radio" id="hit-mouse-down" name="hit-register">
+          <label for="hit-mouse-down">mouse down</label>
+        </div>
+      </div>
+      <div class="settings-column">
+        <div class="setting-name">
+          Duration:
+        </div>
+        <div class="setting-values">
+          <input class="removed" type="radio" id="duration-15" name="duration" checked>
+          <label for="duration-15">15</label>
+          <input class="removed" type="radio" id="duration-30" name="duration">
+          <label for="duration-30">30</label>
+          <input class="removed" type="radio" id="duration-60" name="duration">
+          <label for="duration-60">60</label>
+          <input class="removed" type="radio" id="duration-90" name="duration">
+          <label for="duration-90">90</label>
+        </div>
+        <div class="setting-name">
+          Moving:
+        </div>
+        <div class="setting-values">
+          <input class="removed" type="radio" id="moving-on" name="moving" checked>
+          <label for="moving-on">On</label>
+          <input class="removed" type="radio" id="moving-off" name="moving">
+          <label for="moving-off">Off</label>
+        </div>
+        <div class="setting-name speed">
+          Speed:
+        </div>
+        <div class="setting-values speed">
+          <input class="removed" type="radio" id="speed-slow" name="speed" checked>
+          <label for="speed-slow">slow</label>
+          <input class="removed" type="radio" id="speed-normal" name="speed">
+          <label for="speed-normal">normal</label>
+          <input class="removed" type="radio" id="speed-zoop" name="speed">
+          <label for="speed-zoop">zoop</label>
+        </div>
+      </div>
+    </div>
+    <input class="button button-start" type="button" value="START">
+    <div class="score">
+      Your score: 0/0 (0%)
+    </div>
+  </div>
+  </div>
+</body>
+<footer>
+  Allow cookies for settings to be stored?
+  <input class="button" type="button" name="cookie-yes" value="Yes">
+  <input class="button" type="button" name="cookie-no" value="No">
+</footer>
+<script src="script.js"></script>
+
+</html>

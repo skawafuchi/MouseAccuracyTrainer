@@ -1,8 +1,13 @@
+//TODO
+//Add mouse accuracy stat (for missed clicks)
+
 var cookieAllowed = false;
 var targetSize = 30;
 var intervalTime = 900;
 var interval = null;
-var gameLength = 5000;
+var timerInterval = null;
+var gameLength = 0;
+var timer = 0;
 var score = 0;
 var targetNum = 0;
 var move = false;
@@ -10,6 +15,7 @@ var targetFadeIntervals = [];
 var targetMoveIntervals = [];
 var hitRegister = "click";
 var targetSpeed = 0;
+var totalClicks = 0;
 
 const targetSizes = {
   "target-smol": 30,
@@ -26,7 +32,7 @@ const intervalPeriods = {
 const durationLength = {
   "duration-15": 15000,
   "duration-30": 30000,
-  "duration-60": 50000,
+  "duration-60": 60000,
   "duration-90": 90000
 };
 
@@ -41,7 +47,8 @@ function Target(xPosition, yPosition, xIncrement, yIncrement, element) {
   this.yPosition = yPosition;
   this.xIncrement = xIncrement;
   this.yIncrement = yIncrement;
-  this.opacity = 1;
+  this.opacity = 0;
+  this.opacityIncrement = 0.01;
   this.element = element;
 }
 
@@ -56,15 +63,17 @@ function createTarget() {
   }
   targetNum++;
   let clickType = hitRegister === "hit-click" ? "onclick" : "onmousedown";
-
-  document.querySelector(".container").innerHTML += '<div id="num' + targetNum + '" ' + clickType + '="addScore(this)" class="target" style="margin-top:' + y + 'px;margin-left:' + x +
-    'px;height:' + targetSize + 'px;width:' + targetSize + 'px; opacity:1;"></div>';
   let left = getRandomArbitrary(0, targetSpeed);
   let right = getRandomArbitrary(0, targetSpeed);
   let createdTarget = new Target(x, y, left, right, ("#num" + targetNum));
+  document.querySelector(".container").innerHTML += '<div id="num' + targetNum + '" ' + clickType + '="addScore(this)" class="target" style="margin-top:' + y + 'px;margin-left:' + x +
+    'px;height:' + targetSize + 'px;width:' + targetSize + 'px; opacity:' + createdTarget.opacity + ';"></div>';
+  // let left = getRandomArbitrary(0, targetSpeed);
+  // let right = getRandomArbitrary(0, targetSpeed);
+  // let createdTarget = new Target(x, y, left, right, ("#num" + targetNum));
 
   targetFadeIntervals[targetNum] = setInterval(function() {
-    fadeTarget(createdTarget);
+    changeTargetOpacity(createdTarget);
   }, 50);
 
   if (move) {
@@ -89,10 +98,13 @@ function removeTarget(targetElement) {
   targetElement.parentNode.removeChild(targetElement);
 }
 
-function fadeTarget(target) {
-  document.querySelector(target.element).style.opacity = target.opacity - 0.01;
-  target.opacity -= 0.01;
-  if (target.opacity <= 0) {
+function changeTargetOpacity(target) {
+  document.querySelector(target.element).style.opacity = target.opacity + target.opacityIncrement;
+  target.opacity += target.opacityIncrement;
+  if (target.opacity >= 1) {
+    target.opacityIncrement = -target.opacityIncrement;
+  }
+  if (target.opacity <= 0 && target.opacityIncrement < 0) {
     removeTarget(document.querySelector(target.element));
   }
 }
@@ -117,6 +129,17 @@ function moveTarget(target) {
 function addScore(targetElement) {
   removeTarget(targetElement);
   score += 1;
+}
+
+function addClickTotal() {
+  totalClicks += 1;
+}
+
+function timerTick() {
+  let minutes = timer / 60 >= 1 ? Math.floor(timer / 60) : 0;
+  let seconds = timer % 60 > 9 ? timer % 60 : "0" + timer % 60;
+  timer -= 1;
+  document.querySelector(".timer").textContent = minutes + ":" + seconds;
 }
 
 function startGame() {
@@ -165,13 +188,23 @@ function startGame() {
   interval = setInterval(createTarget, intervalTime);
   //add interval time to give player time to hit last target, minus one to not add another target
   setTimeout(stopGame, gameLength + intervalTime - 1);
+  timer = gameLength / 1000;
+  //call tick once to set correct clock time on screen;
+  timerTick();
+  timerInterval = setInterval(timerTick, 1000);
   document.querySelector(".settings").classList.add("removed");
+  document.querySelector("footer").classList.add("removed");
+  document.querySelector(".timer").classList.remove("removed");
 }
 
 function stopGame() {
   clearInterval(interval);
+  clearInterval(timerInterval);
   document.querySelector(".settings").classList.remove("removed");
-  document.querySelector(".score").textContent = "Hit " + score + "/" + targetNum + " (" + Math.round(score/targetNum*10000)/100 + "%)";
+  document.querySelector("footer").classList.remove("removed");
+  document.querySelector(".timer").classList.add("removed");
+
+  document.querySelector(".score").textContent = "Hit " + score + "/" + targetNum + " (" + Math.round(score / targetNum * 10000) / 100 + "%)";
   targets = document.querySelectorAll(".target");
   for (let i = 0; i < targets.length; i++) {
     targets[i].parentNode.removeChild(targets[i]);
@@ -204,11 +237,11 @@ document.querySelector("#moving-on").addEventListener("click", function() {
 
 document.querySelector('input[name="cookie-yes"]').addEventListener("click", function() {
   cookieAllowed = true;
-  document.querySelector("footer").classList.add("removed");
+  document.querySelector(".cookies").classList.add("removed");
 });
 
 document.querySelector('input[name="cookie-no"]').addEventListener("click", function() {
-  document.querySelector("footer").classList.add("removed");
+  document.querySelector(".cookies").classList.add("removed");
 });
 
 if (document.cookie) {
@@ -224,7 +257,7 @@ if (document.cookie) {
   for (let i = 0; i < cookieValues.length; i++) {
     document.querySelector("#" + cookieValues[i]).checked = true;
   }
-  if (document.querySelector("#moving-off").checked){
+  if (document.querySelector("#moving-off").checked) {
     let speedButtons = document.querySelectorAll(".speed");
     for (let i = 0; i < speedButtons.length; i++) {
       speedButtons[i].classList.add("hidden");

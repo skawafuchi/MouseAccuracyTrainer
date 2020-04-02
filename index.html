@@ -9,92 +9,96 @@
 </head>
 
 <body>
-    <div class="container">
-  <div class="settings">
-    <h1>
-      Mouse Accuracy Trainer
-    </h1>
-    <div class="adjustable-settings">
-      <div class="settings-column">
-        <div class="setting-name">
-          Target Size:
+  <div class="container">
+    <div class="timer removed">0:00</div>
+    <div class="settings">
+      <h1>
+        Mouse Accuracy Trainer
+      </h1>
+      <div class="adjustable-settings">
+        <div class="settings-column">
+          <div class="setting-name">
+            Target Size:
+          </div>
+          <div class="setting-values">
+            <input class="removed" type="radio" id="target-smol" name="size">
+            <label for="target-smol">smol</label>
+            <input class="removed" type="radio" id="target-medium" name="size" checked>
+            <label for="target-medium">medium</label>
+            <input class="removed" type="radio" id="target-chonk" name="size">
+            <label for="target-chonk">chonk</label>
+          </div>
+          <div class="setting-name">
+            Difficulty:
+          </div>
+          <div class="setting-values">
+            <input class="removed" type="radio" id="difficulty-easy" name="difficulty">
+            <label for="difficulty-easy">easy</label>
+            <input class="removed" type="radio" id="difficulty-normal" name="difficulty" checked>
+            <label for="difficulty-normal">normal</label>
+            <input class="removed" type="radio" id="difficulty-brutal" name="difficulty">
+            <label for="difficulty-brutal">brutal</label>
+          </div>
+          <div class="setting-name">
+            Hit Register:
+          </div>
+          <div class="setting-values">
+            <input class="removed" type="radio" id="hit-click" name="hit-register">
+            <label for="hit-click"><abbr title="Click will only register if you do not move your mouse while the button is pressed down">click</abbr></label>
+            <input class="removed" type="radio" id="hit-mouse-down" name="hit-register" checked>
+            <label for="hit-mouse-down"><abbr title="Mouse down will register immediately when you press the mouse button">mouse down</abbr></label>
+          </div>
         </div>
-        <div class="setting-values">
-          <input class="removed" type="radio" id="target-smol" name="size">
-          <label for="target-smol">smol</label>
-          <input class="removed" type="radio" id="target-medium" name="size" checked>
-          <label for="target-medium">medium</label>
-          <input class="removed" type="radio" id="target-chonk" name="size">
-          <label for="target-chonk">chonk</label>
-        </div>
-        <div class="setting-name">
-          Difficulty:
-        </div>
-        <div class="setting-values">
-          <input class="removed" type="radio" id="difficulty-easy" name="difficulty">
-          <label for="difficulty-easy">easy</label>
-          <input class="removed" type="radio" id="difficulty-normal" name="difficulty" checked>
-          <label for="difficulty-normal">medium</label>
-          <input class="removed" type="radio" id="difficulty-brutal" name="difficulty">
-          <label for="difficulty-brutal">brutal</label>
-        </div>
-        <div class="setting-name">
-          Hit Register:
-        </div>
-        <div class="setting-values">
-          <input class="removed" type="radio" id="hit-click" name="hit-register">
-          <label for="hit-click"><abbr title="Click will only register if you do not move your mouse while the button is pressed down">click</abbr></label>
-          <input class="removed" type="radio" id="hit-mouse-down" name="hit-register" checked>
-          <label for="hit-mouse-down"><abbr title="Mouse down will register immediately when you press the mouse button">mouse down</abbr></label>
+        <div class="settings-column">
+          <div class="setting-name">
+            Duration:
+          </div>
+          <div class="setting-values">
+            <input class="removed" type="radio" id="duration-15" name="duration">
+            <label for="duration-15">15</label>
+            <input class="removed" type="radio" id="duration-30" name="duration" checked>
+            <label for="duration-30">30</label>
+            <input class="removed" type="radio" id="duration-60" name="duration">
+            <label for="duration-60">60</label>
+            <input class="removed" type="radio" id="duration-90" name="duration">
+            <label for="duration-90">90</label>
+          </div>
+          <div class="setting-name">
+            Moving:
+          </div>
+          <div class="setting-values">
+            <input class="removed" type="radio" id="moving-on" name="moving" checked>
+            <label for="moving-on">On</label>
+            <input class="removed" type="radio" id="moving-off" name="moving">
+            <label for="moving-off">Off</label>
+          </div>
+          <div class="setting-name speed">
+            Speed:
+          </div>
+          <div class="setting-values speed">
+            <input class="removed" type="radio" id="speed-slow" name="speed">
+            <label for="speed-slow">slow</label>
+            <input class="removed" type="radio" id="speed-normal" name="speed" checked>
+            <label for="speed-normal">normal</label>
+            <input class="removed" type="radio" id="speed-zoop" name="speed">
+            <label for="speed-zoop">zoop</label>
+          </div>
         </div>
       </div>
-      <div class="settings-column">
-        <div class="setting-name">
-          Duration:
-        </div>
-        <div class="setting-values">
-          <input class="removed" type="radio" id="duration-15" name="duration">
-          <label for="duration-15">15</label>
-          <input class="removed" type="radio" id="duration-30" name="duration" checked>
-          <label for="duration-30">30</label>
-          <input class="removed" type="radio" id="duration-60" name="duration">
-          <label for="duration-60">60</label>
-          <input class="removed" type="radio" id="duration-90" name="duration">
-          <label for="duration-90">90</label>
-        </div>
-        <div class="setting-name">
-          Moving:
-        </div>
-        <div class="setting-values">
-          <input class="removed" type="radio" id="moving-on" name="moving" checked>
-          <label for="moving-on">On</label>
-          <input class="removed" type="radio" id="moving-off" name="moving">
-          <label for="moving-off">Off</label>
-        </div>
-        <div class="setting-name speed">
-          Speed:
-        </div>
-        <div class="setting-values speed">
-          <input class="removed" type="radio" id="speed-slow" name="speed">
-          <label for="speed-slow">slow</label>
-          <input class="removed" type="radio" id="speed-normal" name="speed" checked>
-          <label for="speed-normal">normal</label>
-          <input class="removed" type="radio" id="speed-zoop" name="speed">
-          <label for="speed-zoop">zoop</label>
-        </div>
+      <input class="button button-start" type="button" value="START">
+      <div class="score">
+        Your score: 0/0 (0%)
       </div>
     </div>
-    <input class="button button-start" type="button" value="START">
-    <div class="score">
-      Your score: 0/0 (0%)
-    </div>
-  </div>
   </div>
 </body>
 <footer>
-  Allow cookies for settings to be stored?
-  <input class="button" type="button" name="cookie-yes" value="Yes">
-  <input class="button" type="button" name="cookie-no" value="No">
+  <div class="cookies">
+    Allow cookies for settings to be stored?
+    <input class="button" type="button" name="cookie-yes" value="Yes">
+    <input class="button" type="button" name="cookie-no" value="No">
+  </div>
+    <div class="info">You can toggle fullscreen with F11 on most browsers.</div>
 </footer>
 <script src="script.js"></script>
 

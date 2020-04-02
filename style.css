@@ -7,7 +7,16 @@ body {
   background-color: #323232;
   text-align: center;
   font-family: 'Varela Round', sans-serif;
-  color:#FDFDFD;
+  color: #FDFDFD;
+}
+
+footer{
+  padding: 10px;
+  bottom:0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  background-color: #212121;
 }
 
 input[type="radio"]:checked+label {
@@ -35,9 +44,8 @@ label {
   }
 }
 
-.button,.button-start {
+.button, .button-start {
   margin: auto;
-  margin-top: 20px;
   font-size: 1em;
   font-family: 'Varela Round', sans-serif;
   padding: 0 20px;
@@ -49,6 +57,7 @@ label {
 }
 
 .button-start {
+  margin-top: 20px;
   font-size: 3em;
 }
 
@@ -60,7 +69,7 @@ label {
   display: none;
 }
 
-.hidden{
+.hidden {
   visibility: hidden;
 }
 
@@ -92,12 +101,30 @@ label {
   align-items: center;
 }
 
-.setting-name,.setting-values{
-  margin:10px;
+.setting-name, .setting-values {
+  margin: 10px;
 }
 
 .target {
   border-radius: 50%;
   background-color: #14ffec;
   position: absolute;
+}
+
+.timer {
+  position: fixed;
+  opacity: 0.3;
+  font-size: 10em;
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }

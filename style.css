@@ -19,6 +19,10 @@ footer{
   background-color: #212121;
 }
 
+h1{
+  padding-top: 10px;
+}
+
 input[type="radio"]:checked+label {
   border: solid 3px #14ffec;
   border-radius: 3px;
@@ -75,6 +79,7 @@ label {
 
 .score {
   margin-top: 10px;
+  padding-bottom: 10px;
 }
 
 .setting-name {

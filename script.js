@@ -48,7 +48,7 @@ function Target(xPosition, yPosition, xIncrement, yIncrement, element) {
   this.xIncrement = xIncrement;
   this.yIncrement = yIncrement;
   this.opacity = 0;
-  this.opacityIncrement = 0.01;
+  this.opacityIncrement = 0.03;
   this.element = element;
 }
 

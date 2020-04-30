@@ -263,5 +263,5 @@ if (document.cookie) {
       speedButtons[i].classList.add("hidden");
     }
   }
-  document.querySelector("footer").classList.add("removed");
+  document.querySelector(".cookies").classList.add("removed");
 }
